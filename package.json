@@ -1,0 +1,68 @@
+{
+  "name": "vasco",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "tsc.check": "tsc --noEmit",
+    "tslint.check": "tslint --project tsconfig.json",
+    "tslint.fix": "tslint --project tsconfig.json --fix",
+    "prettier.check": "prettier src/**/*.{js,jsx,ts,tsx} --list-different",
+    "prettier.fix": "prettier src/**/*.{js,jsx,ts,tsx} --write",
+    "prestorybook": "rnstl"
+  },
+  "dependencies": {
+    "react": "16.8.1",
+    "react-native": "0.61.2",
+    "react-native-config": "^0.11.7",
+    "react-native-gesture-handler": "^1.4.1",
+    "react-native-i18n": "^2.0.15",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.0.10",
+    "react-navigation-stack": "^1.9.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.0",
+    "@babel/runtime": "^7.5.0",
+    "@react-native-community/eslint-config": "^0.0.3",
+    "@storybook/addon-knobs": "4.x",
+    "@storybook/addon-ondevice-knobs": "4.x",
+    "@storybook/react-native": "^5.2.4",
+    "@types/react-native-i18n": "^2.0.0",
+    "@types/react-native-vector-icons": "^6.4.4",
+    "babel-jest": "^24.1.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "core-js": "2.x",
+    "jest": "^24.1.0",
+    "metro-react-native-babel-preset": "^0.51.1",
+    "prettier": "^1.18.2",
+    "react-native-storybook-loader": "^1.8.1",
+    "react-test-renderer": "16.8.1",
+    "tsc": "^1.20150623.0",
+    "tslint": "^5.20.0",
+    "tslint-config-airbnb": "^5.11.2",
+    "tslint-config-prettier": "^1.18.0"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "svg.transform": "echo \"Usage: yarn svg.transform my-svg.svg > my-svg.tsx\" && svgr --native",
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "semi": true,
+    "printWidth": 80
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "./src"
+      ],
+      "pattern": "**/*.stories.tsx",
+      "outputFile": "./storybook/storyLoader.js"
+    }
+  }
+}

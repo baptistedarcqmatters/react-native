@@ -1,0 +1,60 @@
+image: $CI_REGISTRY/docker/base-images/ci/node10
+
+stages:
+  - build
+  - lint
+  - test
+
+cache:
+  paths:
+    - front/node_modules/
+
+.front_job:
+  tags:
+    - k8s
+  only:
+    refs:
+      - merge_requests
+      - master
+      - tags
+    
+    changes:
+      - front/**/*
+      - common/**/*
+      - .gitlab-ci.yml
+      - Makefile
+      - package.json
+    
+
+front_build_image_ci:
+  extends: .front_job
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+  script:
+    - docker build
+      --build-arg REGISTRY=$CI_REGISTRY
+      -t $CI_REGISTRY_IMAGE/front/ci:$CI_COMMIT_SHA -f ./front/docker/ci/Dockerfile .
+    - docker push $CI_REGISTRY_IMAGE/front/ci:$CI_COMMIT_SHA
+
+front_lint_ts:
+  extends: .front_job
+  stage: lint
+  image: $CI_REGISTRY_IMAGE/front/ci:$CI_COMMIT_SHA
+  before_script:
+    - cd /usr/src/app/front
+  script:
+    - yarn tslint.check
+    - yarn prettier.check
+    - yarn tsc.check
+
+front_unit_test:
+  extends: .front_job
+  stage: lint
+  image: $CI_REGISTRY_IMAGE/front/ci:$CI_COMMIT_SHA
+  before_script:
+    - cd /usr/src/app/front
+  script:
+    - yarn test

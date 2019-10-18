@@ -1,0 +1,11 @@
+{
+  "generator-react-native": {
+    "base-project": true,
+    "tsc": true,
+    "rn-config": true,
+    "i18n": true,
+    "storybook": true,
+    "tslint": true,
+    "prettier": true
+  }
+}
