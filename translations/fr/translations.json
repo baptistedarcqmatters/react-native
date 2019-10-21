@@ -1,1 +1,10 @@
-{ "login": { "cta": "Connexion" }, "home": { "title": "Page principale :)" } }
+{
+  "login": { "cta": "Connexion" },
+  "home": { "title": "Page principale :)" },
+  "update": {
+    "force": { "title": "La version de votre application est obsolete" },
+    "should": {
+      "title": "Une version plus récente de l'application est disponible"
+    }
+  }
+}
