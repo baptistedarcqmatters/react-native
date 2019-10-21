@@ -1,1 +1,10 @@
-{ "login": { "cta": "Login" }, "home": { "title": "Home Page :)" } }
+{
+  "login": { "cta": "Login" },
+  "home": { "title": "Home Page :)" },
+  "update": {
+    "force": { "title": "The version of your application is obsolete" },
+    "should": {
+      "title": "A newer version of the application is available"
+    }
+  }
+}
